@@ -59,6 +59,8 @@ func DecryptWithECPrivateKey(privateKey, encryptedText string) (decryptedText st
 }
 
 //signing a text message
+//sign() needs both the public and private key, and the secretkey/message which needs to be signed
+//this function would return hash of the data/message to be signed and the public key in hexadecimal acc to ECDSA format
 func Sign(PrivateKey string, PublicKey string, secertKey string) (hashOfData string, publicKeyInHex string) {
 	chavePrivada := PrivateKey // private key
 	//chavePrivadaEmHexadecimal := hex.EncodeToString([]byte(chavePrivada))    // private key in hexadecimal
@@ -103,6 +105,8 @@ func Sign(PrivateKey string, PublicKey string, secertKey string) (hashOfData str
 }
 
 //verifying any signed text message
+//verify() would need hash of the data/message to be signed and the public key in hexadecimal according to ECDSA format
+//it would return true if message that was signed was actually signed by the public key
 func Verify(hashOfSignedData string, publicKeyInHex string, secertKey string) (veri bool) {
 	//dadoAssinadoEmHexa = data signed in hexa = "0xa3d46b97492d362769420dbe0bcc87910579fb92e66c106d8c7fe029d00845882fc02d9149a63c9f9feee8e6e16f11edb5f7ae0cfb4e437ef1f5230c0336070c01"
 	//assinatura = signature
